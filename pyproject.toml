@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cybersecurity-llm-engineering"
+version = "0.1.0"
+description = "Reproducible patterns for cybersecurity dataset QA, LoRA training, and inference benchmarking."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+training = [
+  "accelerate>=1.0",
+  "datasets>=3.0",
+  "peft>=0.14",
+  "safetensors>=0.4",
+  "torch>=2.5",
+  "transformers>=4.48",
+]
+plots = ["matplotlib>=3.9"]
+test = ["pytest>=8.0"]
+
+[project.scripts]
+dataset-quality = "src.evaluation.dataset_quality:main"
+llm-benchmark = "src.benchmarking.openai_compatible:main"
+train-lora = "src.training.train_lora:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["."]
+testpaths = ["tests"]
+

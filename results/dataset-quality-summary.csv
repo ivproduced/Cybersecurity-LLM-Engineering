@@ -1,0 +1,4 @@
+stage,records,unique_questions,answers_at_least_150_chars,missing_questions,missing_answers,average_answer_chars,notes
+initial_diagnostic,594388,,,0,0,,"17 of 161 inventoried sources represented; 52.1% heuristic overall quality"
+remediated_validation,581076,574838,563416,0,0,671,"97.0% of answers at least 150 characters; mechanical validation only"
+
