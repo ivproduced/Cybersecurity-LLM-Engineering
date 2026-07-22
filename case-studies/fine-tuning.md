@@ -59,8 +59,9 @@ At the retained checkpoint:
 - Training loss: **1.0411 at step 5,000 → 0.6959 at step 465,000**
 - Evaluation loss: **1.1516 at step 5,000 → 0.7556 at step 465,000**
 - Full validation runtime at step 465,000: **34,271.6 seconds (about 9.5 hours)**
+- Seeded 5,000-record validation runtime: **341.9 seconds**
 
-The decreasing losses show optimization progress, not operational cybersecurity competence. A held-out task suite, factuality review, safety testing, and baseline comparison are still required.
+Reducing routine validation from 503,728 records to a seeded 5,000-record subset reduced measured wall time by approximately **100.2×** while preserving nearly identical processing rate (14.698 versus 14.623 samples/second). This is a scope reduction, not an inference-engine speedup. The decreasing losses show optimization progress, not operational cybersecurity competence. A held-out task suite, factuality review, safety testing, and baseline comparison are still required.
 
 ![Training loss over recorded milestones](../results/training-loss.png)
 
@@ -91,4 +92,3 @@ The original 5,000-step checkpoint interval limited data loss but still exposed 
 ## Portfolio takeaway
 
 The strongest claim is not “I finished a cybersecurity model.” It is: **I designed and executed a large LoRA experiment, preserved recoverable state through infrastructure failures, diagnosed documentation drift, and converted the lessons into a more resilient, reviewable implementation.**
-

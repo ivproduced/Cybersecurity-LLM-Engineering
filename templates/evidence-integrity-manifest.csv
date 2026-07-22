@@ -1,0 +1,2 @@
+evidence_id,test_id,file_name,byte_size,sha256,source_time_utc,collected_at_utc,collector_role,tool_revision,sensitivity,retention_record
+EVD-EXAMPLE,TEST-EXAMPLE,example.file,0,replace-with-64-character-digest,YYYY-MM-DDTHH:MM:SSZ,YYYY-MM-DDTHH:MM:SSZ,evaluator,immutable-revision,controlled,internal-reference

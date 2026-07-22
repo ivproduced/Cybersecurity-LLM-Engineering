@@ -1,0 +1,50 @@
+schema_version: 1
+test_id: PERF-YYYYMMDD-001
+approved_poc_record: internal-reference
+started_at_utc: YYYY-MM-DDTHH:MM:SSZ
+operator_role: evaluator
+system_manifest_id: SYSTEM-YYYYMMDD-001
+source_revision: immutable-commit
+serving:
+  runtime: vllm
+  runtime_version: pending
+  container_digest: replace-with-digest
+  launch_configuration: internal-reference
+model:
+  registry_id: organization/model-name
+  registry_version: immutable-version
+  artifact_sha256: replace-with-64-character-digest
+  dtype_or_quantization: pending
+workload:
+  prompt_suite_version: pending
+  prompt_suite_sha256: replace-with-64-character-digest
+  endpoint_type: completions
+  repetitions: 3
+  randomized_order: true
+  concurrency_levels: [1, 4, 8, 16]
+  requests_per_level: 100
+  maximum_output_tokens: 128
+  temperature: 0.0
+acceptance:
+  minimum_success_rate: define-before-test
+  maximum_p95_latency_seconds: define-before-test
+  minimum_output_tokens_per_second: define-before-test
+  maximum_gpu_temperature_c: define-before-test
+scenarios:
+  - warmup
+  - steady_state
+  - burst
+  - saturation
+  - soak
+  - restart_recovery
+  - degraded_capacity
+evidence:
+  raw_request_bundle: controlled-location
+  telemetry_bundle: controlled-location
+  sha256_manifest: controlled-location
+  sanitized_summary: results/approved-benchmark-summary.csv
+deviations: []
+review:
+  result: pending
+  reviewer_role: independent-reviewer
+  disposition: pending

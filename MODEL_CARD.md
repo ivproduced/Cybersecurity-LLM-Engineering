@@ -39,9 +39,9 @@ These loss curves show that the optimization objective improved. They do not mea
 - A long answer can still be wrong; mechanical length thresholds do not establish quality.
 - Cybersecurity standards and threat information change over time.
 - The dataset may encode duplicated phrasing, source imbalance, model-generated artifacts, and historical terminology.
+- The retained validation split was randomized by row. Source-related or semantically similar records may occur in both training and validation data, so validation loss may be optimistic.
 - The model may hallucinate requirements or produce insecure technical instructions.
 
 ## Required evaluation before release
 
 A release decision would require a frozen held-out suite, comparison to the unmodified base model, expert rubric scoring, citation verification, leakage and memorization testing, adversarial safety testing, subgroup/topic analysis, and documented acceptance thresholds. The final checkpoint and evaluation records would need integrity hashes and independent review.
-

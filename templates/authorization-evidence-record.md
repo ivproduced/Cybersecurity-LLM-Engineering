@@ -1,0 +1,26 @@
+# Authorization evidence record
+
+- Evidence ID:
+- Evidence title:
+- System/component/version:
+- Evidence owner:
+- Sensitivity/marking:
+- Collection date and collector:
+- Claim or implementation statement supported:
+- Agency requirement/control mapping:
+- Responsibility: inherited / shared / system-specific
+- CCP service and inheritance condition, if applicable:
+- Assessment objective or risk question:
+- Approved procedure and sample:
+- Expected result:
+- Observed result:
+- Result: satisfied / other-than-satisfied / not tested
+- Raw evidence locator:
+- File names, sizes, and SHA-256 manifest:
+- Tool/source revision and configuration:
+- Deviations and limitations:
+- Related finding or risk-register ID:
+- Remediation/POA&M reference, if applicable:
+- Reviewer and review date:
+- Approval/disposition:
+- Retention and reassessment trigger:

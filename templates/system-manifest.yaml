@@ -1,0 +1,52 @@
+schema_version: 1
+manifest_id: SYSTEM-YYYYMMDD-001
+captured_at_utc: YYYY-MM-DDTHH:MM:SSZ
+captured_by_role: platform-engineer
+sanitization: public-template
+host:
+  hostname: redacted
+  manufacturer: pending
+  model: pending
+  cpu_model: pending
+  physical_cores: 0
+  logical_cores: 0
+  memory_gb: 0
+  operating_system: pending
+  kernel: pending
+  container_runtime: pending
+  power_supply_and_limit: pending
+  cooling_configuration: pending
+gpus:
+  - logical_name: gpu_0
+    vendor: pending
+    model: pending
+    memory_gb: 0
+    driver_version: pending
+    cuda_or_rocm_version: pending
+    firmware_version: pending
+    power_limit_watts: 0
+    partitioning_mode: none
+  - logical_name: gpu_1
+    vendor: pending
+    model: pending
+    memory_gb: 0
+    driver_version: pending
+    cuda_or_rocm_version: pending
+    firmware_version: pending
+    power_limit_watts: 0
+    partitioning_mode: none
+storage:
+  model_store:
+    medium: pending
+    filesystem: pending
+    usable_capacity_gb: 0
+    measured_read_mbps: 0
+network:
+  interface_speed_gbps: 0
+  topology_description: sanitized-description
+time_sync:
+  source: enterprise-service
+  verification_record: internal-reference
+integrity:
+  source_manifest_sha256: replace-with-64-character-digest
+notes: Device serial numbers, UUIDs, private addresses, and host-specific paths belong only in the controlled manifest.
