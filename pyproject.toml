@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "cybersecurity-llm-engineering"
 version = "0.1.0"
-description = "Reproducible patterns for cybersecurity dataset QA, LoRA training, and inference benchmarking."
+description = "Cybersecurity LLM engineering with reproducible POC and authorization evidence patterns."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = ["PyYAML>=6.0"]
@@ -26,6 +26,8 @@ test = ["pytest>=8.0"]
 dataset-quality = "src.evaluation.dataset_quality:main"
 llm-benchmark = "src.benchmarking.openai_compatible:main"
 train-lora = "src.training.train_lora:main"
+evidence-register-check = "src.governance.evidence_register:main"
+public-release-check = "src.governance.public_release:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -35,4 +37,3 @@ include = ["src*"]
 addopts = "-q"
 pythonpath = ["."]
 testpaths = ["tests"]
-

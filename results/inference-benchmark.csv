@@ -1,34 +1,33 @@
-device,concurrency,throughput_rps,average_latency_seconds,failures
-RTX PRO 6000 Max-Q,50,45.32,1.06,0
-RTX PRO 6000 Max-Q,100,53.19,1.84,0
-RTX PRO 6000 Max-Q,150,54.86,2.68,0
-RTX PRO 6000 Max-Q,200,54.95,3.56,0
-RTX PRO 6000 Max-Q,250,54.90,4.42,0
-RTX PRO 6000 Max-Q,300,54.81,5.30,0
-RTX PRO 6000 Max-Q,350,55.23,6.07,0
-RTX PRO 6000 Max-Q,400,54.05,7.08,0
-RTX 5090,50,23.84,2.04,0
-RTX 5090,100,25.88,3.75,0
-RTX 5090,150,25.72,5.59,0
-RTX 5090,200,25.94,7.30,0
-RTX 5090,250,25.93,8.99,0
-RTX 5090,300,26.02,10.62,0
-RTX 5090,350,25.67,12.42,0
-RTX 5090,400,25.79,13.95,0
-Radeon AI PRO R9700 A,50,4.44,10.14,0
-Radeon AI PRO R9700 A,100,4.58,18.81,0
-Radeon AI PRO R9700 A,150,4.58,26.78,0
-Radeon AI PRO R9700 A,200,4.56,34.36,0
-Radeon AI PRO R9700 A,250,4.54,41.34,0
-Radeon AI PRO R9700 A,300,4.66,47.75,0
-Radeon AI PRO R9700 A,350,4.58,54.55,0
-Radeon AI PRO R9700 A,400,4.59,60.70,0
-Radeon AI PRO R9700 B,50,4.19,10.65,0
-Radeon AI PRO R9700 B,100,4.42,19.32,0
-Radeon AI PRO R9700 B,150,4.50,27.51,0
-Radeon AI PRO R9700 B,200,4.56,34.35,0
-Radeon AI PRO R9700 B,250,4.67,40.84,0
-Radeon AI PRO R9700 B,300,4.59,47.86,0
-Radeon AI PRO R9700 B,350,4.62,54.10,0
-Radeon AI PRO R9700 B,400,4.58,61.08,0
-
+device,concurrency,throughput_rps,average_latency_seconds,failures,evidence_status
+RTX PRO 6000 Max-Q,50,45.32,1.06,0,historical_rerun_required
+RTX PRO 6000 Max-Q,100,53.19,1.84,0,historical_rerun_required
+RTX PRO 6000 Max-Q,150,54.86,2.68,0,historical_rerun_required
+RTX PRO 6000 Max-Q,200,54.95,3.56,0,historical_rerun_required
+RTX PRO 6000 Max-Q,250,54.90,4.42,0,historical_rerun_required
+RTX PRO 6000 Max-Q,300,54.81,5.30,0,historical_rerun_required
+RTX PRO 6000 Max-Q,350,55.23,6.07,0,historical_rerun_required
+RTX PRO 6000 Max-Q,400,54.05,7.08,0,historical_rerun_required
+RTX 5090,50,23.84,2.04,0,historical_rerun_required
+RTX 5090,100,25.88,3.75,0,historical_rerun_required
+RTX 5090,150,25.72,5.59,0,historical_rerun_required
+RTX 5090,200,25.94,7.30,0,historical_rerun_required
+RTX 5090,250,25.93,8.99,0,historical_rerun_required
+RTX 5090,300,26.02,10.62,0,historical_rerun_required
+RTX 5090,350,25.67,12.42,0,historical_rerun_required
+RTX 5090,400,25.79,13.95,0,historical_rerun_required
+Radeon AI PRO R9700 A,50,4.44,10.14,0,historical_rerun_required
+Radeon AI PRO R9700 A,100,4.58,18.81,0,historical_rerun_required
+Radeon AI PRO R9700 A,150,4.58,26.78,0,historical_rerun_required
+Radeon AI PRO R9700 A,200,4.56,34.36,0,historical_rerun_required
+Radeon AI PRO R9700 A,250,4.54,41.34,0,historical_rerun_required
+Radeon AI PRO R9700 A,300,4.66,47.75,0,historical_rerun_required
+Radeon AI PRO R9700 A,350,4.58,54.55,0,historical_rerun_required
+Radeon AI PRO R9700 A,400,4.59,60.70,0,historical_rerun_required
+Radeon AI PRO R9700 B,50,4.19,10.65,0,historical_rerun_required
+Radeon AI PRO R9700 B,100,4.42,19.32,0,historical_rerun_required
+Radeon AI PRO R9700 B,150,4.50,27.51,0,historical_rerun_required
+Radeon AI PRO R9700 B,200,4.56,34.35,0,historical_rerun_required
+Radeon AI PRO R9700 B,250,4.67,40.84,0,historical_rerun_required
+Radeon AI PRO R9700 B,300,4.59,47.86,0,historical_rerun_required
+Radeon AI PRO R9700 B,350,4.62,54.10,0,historical_rerun_required
+Radeon AI PRO R9700 B,400,4.58,61.08,0,historical_rerun_required

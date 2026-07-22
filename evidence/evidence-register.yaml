@@ -1,0 +1,129 @@
+schema_version: 1
+project: cybersecurity-llm-engineering
+states:
+  - verified
+  - historical_rerun_required
+  - partially_verified
+  - implementation_only
+records:
+  - id: EVD-TRN-001
+    title: Retained LoRA training state
+    domain: training
+    status: verified
+    sensitivity: internal
+    claim: >-
+      The retained trainer state reached step 465000 of 503729 planned steps,
+      with training loss decreasing from 1.0411 at step 5000 to 0.6959 at
+      step 465000 and evaluation loss decreasing from 1.1516 to 0.7556.
+    public_artifacts:
+      - results/training-history.csv
+      - case-studies/fine-tuning.md
+      - MODEL_CARD.md
+    source_evidence: Retained checkpoint trainer state and adapter configuration in restricted local storage.
+    limitations: Optimization loss does not establish factuality, safety, mission utility, or superiority to the base model.
+    authorization_reuse: Configuration, recovery, integrity, and evaluation-planning evidence after agency-local hashing and review.
+
+  - id: EVD-EVL-001
+    title: Full-versus-seeded validation runtime
+    domain: evaluation
+    status: verified
+    sensitivity: internal
+    claim: >-
+      A 503728-record evaluation completed in 34271.6301 seconds at 14.698
+      samples per second; a seeded 5000-record evaluation completed in
+      341.9276 seconds at 14.623 samples per second.
+    public_artifacts:
+      - results/evaluation-efficiency.csv
+      - case-studies/fine-tuning.md
+    source_evidence: Retained trainer state and timestamped evaluation output in restricted local storage.
+    limitations: The approximately 100-fold wall-time reduction comes from a smaller evaluation scope, not an engine speedup.
+    authorization_reuse: Capacity estimate and support for frequent subset checks plus milestone full-corpus evaluation.
+
+  - id: EVD-DAT-001
+    title: Executed dataset split metadata
+    domain: data
+    status: verified
+    sensitivity: internal
+    claim: >-
+      Retained metadata records 5037282 total rows split with seed 42 into
+      4029825 training, 503728 validation, and 503729 test rows.
+    public_artifacts:
+      - DATASET_CARD.md
+    source_evidence: Retained split metadata in restricted local storage.
+    limitations: The row-randomized split may leak semantically similar or same-source records across partitions.
+    authorization_reuse: Data inventory and evidence for a required source-grouped, semantic-leakage-controlled redesign.
+
+  - id: EVD-REC-001
+    title: Restart and reconciliation run
+    domain: resilience
+    status: verified
+    sensitivity: controlled
+    claim: >-
+      A timestamped recovery run loaded 400163 prior records, completed a
+      final 100045-record tranche in 98860.707 seconds, consolidated 500208
+      records, and recorded five errors.
+    public_artifacts:
+      - results/recovery-summary.csv
+      - case-studies/poc-authorization-evidence.md
+    source_evidence: Timestamped recovery log in restricted local storage; prompts and generated records are excluded.
+    limitations: The aggregate does not establish semantic output quality, and the five errors require an agency-local disposition.
+    authorization_reuse: Recovery, reconciliation, error-handling, and continuity test evidence after source-log integrity review.
+
+  - id: EVD-GEN-001
+    title: Historical document-generation workload summary
+    domain: performance
+    status: partially_verified
+    sensitivity: controlled
+    claim: >-
+      A retained summary records 1073 successful items in 520.255 seconds,
+      approximately 2.431 million total tokens, 4673 total tokens per second,
+      and 832 output tokens per second.
+    public_artifacts:
+      - results/generation-run-summary.csv
+      - case-studies/poc-authorization-evidence.md
+    source_evidence: Aggregate generated-workload record in restricted local storage; raw content is excluded.
+    limitations: The retained bundle lacks a complete model, runtime, decoding, and current hardware manifest.
+    authorization_reuse: Workload-sizing hypothesis only; rerun on the current configuration before a capacity decision.
+
+  - id: EVD-MIG-001
+    title: Historical GPU partition enumeration
+    domain: infrastructure
+    status: partially_verified
+    sensitivity: internal
+    claim: A retained CUDA test enumerated three logical GPU partitions exposing 48, 24, and 24 GB of memory.
+    public_artifacts:
+      - results/partition-validation-summary.csv
+      - case-studies/poc-authorization-evidence.md
+    source_evidence: Retained CUDA enumeration and memory-access test output in restricted local storage.
+    limitations: Enumeration and allocation do not prove tenant isolation, performance fairness, fault containment, or suitability for the current dual-GPU host.
+    authorization_reuse: Initial feasibility and inventory evidence; isolation, workload, monitoring, and recovery tests remain required.
+
+  - id: EVD-INF-001
+    title: Historical vLLM concurrency table
+    domain: performance
+    status: historical_rerun_required
+    sensitivity: internal
+    claim: A retained aggregate table reports a peak of 55.23 requests per second at concurrency 350 on one historical endpoint.
+    public_artifacts:
+      - results/inference-benchmark.csv
+      - results/throughput-latency.png
+      - case-studies/inference-benchmarking.md
+    source_evidence: Historical aggregate report; matching request-level observations were not retained.
+    limitations: Missing raw requests, hashes, software manifest, launch configuration, repetitions, and telemetry prevent independent verification.
+    authorization_reuse: Defines a reproducible rerun hypothesis; not valid as current capacity or comparative hardware evidence.
+
+  - id: EVD-IMP-001
+    title: Public benchmark and governance implementation
+    domain: implementation
+    status: implementation_only
+    sensitivity: public
+    claim: The repository implements sanitized benchmark, checkpoint, dataset-quality, evidence-register, and public-release utilities.
+    public_artifacts:
+      - src/benchmarking/openai_compatible.py
+      - src/training/checkpoints.py
+      - src/evaluation/dataset_quality.py
+      - src/governance/evidence_register.py
+      - src/governance/public_release.py
+    source_evidence: Version-controlled public source and automated tests.
+    limitations: Executable code is not evidence that a control or test procedure operated successfully in a target environment.
+    authorization_reuse: Candidate test tooling after code review, environment validation, configuration control, and approved execution.

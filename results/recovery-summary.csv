@@ -1,0 +1,7 @@
+metric,value,evidence_status,notes
+prior_records_loaded,400163,verified,Recovered completed work before the final tranche
+final_tranche_records,100045,verified,Records completed after recovery
+final_tranche_runtime_seconds,98860.707,verified,Timestamp-derived elapsed time
+final_tranche_records_per_hour,3643.13,verified,Aggregate production rate
+consolidated_records,500208,verified,Final reconciled count
+recorded_errors,5,verified,Requires controlled root-cause disposition

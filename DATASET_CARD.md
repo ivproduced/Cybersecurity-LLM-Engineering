@@ -6,9 +6,9 @@ Only [`sample-data/synthetic_examples.jsonl`](sample-data/synthetic_examples.jso
 
 ## Historical training corpus
 
-Project artifacts describe a consolidated English cybersecurity Q&A corpus of approximately 4.26 million records, split roughly 90/5/5. The executed training script reported approximately 3.84 million training records. Topic categories included NIST security controls, system-security-plan writing, STIG concepts, MITRE ATT&CK, CWE, CAPEC, and security-documentation patterns.
+Retained split metadata records a consolidated English cybersecurity Q&A corpus of **5,037,282 records**. A seeded row-level split (`seed=42`) produced 4,029,825 training records, 503,728 validation records, and 503,729 test records: approximately 80/10/10. Topic categories included NIST security controls, system-security-plan writing, STIG concepts, MITRE ATT&CK, CWE, CAPEC, and security-documentation patterns.
 
-The historical corpus is not redistributed because source-level licensing, generated-content provenance, and data authorization must be reviewed before publication. Aggregate counts in project notes should be treated as experiment records rather than an independently audited dataset release.
+Earlier notes described approximately 4.26 million records and a 90/5/5 split. Those figures conflict with the retained split metadata and are treated as documentation drift, not execution evidence. The historical corpus is not redistributed because source-level licensing, generated-content provenance, and data authorization must be reviewed before publication. Aggregate counts are experiment records rather than an independently audited dataset release.
 
 ## Earlier quality-remediation stage
 
@@ -46,5 +46,4 @@ These figures describe mechanical validation and pipeline history. They do not p
 
 ## Limitations and risks
 
-Generated examples can amplify the generator's errors. Security-framework mappings are contextual and version dependent. Source imbalance can make aggregate metrics misleading. Apparent diversity from paraphrasing may not represent conceptual diversity. Training and test splits must be grouped by source and semantic similarity, not only randomized by row.
-
+Generated examples can amplify the generator's errors. Security-framework mappings are contextual and version dependent. Source imbalance can make aggregate metrics misleading. Apparent diversity from paraphrasing may not represent conceptual diversity. The retained 80/10/10 split was randomized by row, so semantically similar paraphrases or records derived from the same source may cross split boundaries and inflate validation results. A release-quality evaluation must rebuild splits by source and semantic cluster.

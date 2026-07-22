@@ -1,0 +1,7 @@
+metric,value,unit,evidence_status
+items_attempted,1073,count,partially_verified
+items_successful,1073,count,partially_verified
+runtime,520.255,seconds,partially_verified
+total_tokens_approx,2431000,tokens,partially_verified
+aggregate_token_rate,4673,tokens_per_second,partially_verified
+output_token_rate,832,tokens_per_second,partially_verified

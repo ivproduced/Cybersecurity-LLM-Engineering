@@ -1,0 +1,2 @@
+risk_id,date_opened,system_component,risk_statement,evidence_ids,likelihood,impact,severity,existing_mitigations,planned_treatment,owner,due_date,status,residual_risk,decision_authority,review_date
+RISK-EXAMPLE,YYYY-MM-DD,example_component,"If condition occurs then mission impact may result",EVD-EXAMPLE,define,define,define,describe,avoid_or_mitigate_or_transfer_or_accept,role,YYYY-MM-DD,open,define,role,YYYY-MM-DD

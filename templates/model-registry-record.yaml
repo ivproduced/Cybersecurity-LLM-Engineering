@@ -1,0 +1,44 @@
+schema_version: 1
+model_id: organization/model-name
+registry_version: immutable-version
+status: quarantined  # quarantined | evaluated | approved | retired
+intended_use: define the bounded approved purpose
+prohibited_uses:
+  - autonomous authorization or compliance decisions
+source:
+  provider: approved-source
+  upstream_revision: immutable-revision
+  acquisition_date: YYYY-MM-DD
+  acquisition_method: approved-controlled-transfer
+artifacts:
+  - file: model-file.safetensors
+    sha256: replace-with-64-character-digest
+    size_bytes: 0
+license:
+  identifier: pending-review
+  review_record: internal-reference
+supply_chain:
+  malware_scan_record: internal-reference
+  serialization_review: pending
+  signature_or_attestation: pending
+evaluation:
+  suite_version: pending
+  evidence_ids: []
+  disposition: pending
+deployment:
+  approved_environments: []
+  runtime_digest: pending
+  configuration_baseline: internal-reference
+  rollback_version: pending
+governance:
+  owner_role: model-custodian
+  approving_role: designated-approver
+  approval_date: null
+  next_review_date: null
+  change_triggers:
+    - upstream revision
+    - artifact digest
+    - quantization or adaptation
+    - runtime or serving configuration
+    - intended use or data category
+notes: Never place access tokens, private endpoints, or controlled evidence in this record.

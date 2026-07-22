@@ -1,0 +1,25 @@
+name: public-release-gates
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install test dependencies
+        run: python -m pip install -e '.[test]'
+      - name: Validate evidence register
+        run: python -m src.governance.evidence_register evidence/evidence-register.yaml
+      - name: Check public release content
+        run: python -m src.governance.public_release .
+      - name: Run tests
+        run: python -m pytest

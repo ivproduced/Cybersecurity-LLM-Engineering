@@ -1,10 +1,10 @@
 # Case study: inference concurrency benchmarking
 
-## Executive summary
+## Executive summary and evidence status
 
-I benchmarked OpenAI-compatible vLLM endpoints across four individual GPU endpoints to find the throughput/latency tradeoff for a realistic cybersecurity-generation request. The RTX PRO 6000 Max-Q endpoint reached the highest measured throughput: 55.23 requests per second at concurrency 350, with 6.07-second mean latency and no recorded failures.
+Historical notes summarize an OpenAI-compatible vLLM concurrency experiment across four individual GPU endpoints. The highest reported aggregate was 55.23 requests per second at concurrency 350 on an RTX PRO 6000 Max-Q endpoint, with 6.07-second mean latency and no reported failures.
 
-The result applies only to the tested model, prompt, output limit, runtime, and endpoint configuration. It is capacity-planning evidence, not a universal hardware ranking.
+**Evidence status: historical / rerun required.** The request-level observations, software manifest, model hash, launch arguments, and telemetry were not retained with the summary. The figures below are useful for designing a reproducible rerun, but they are not claimed as verified current performance or a universal hardware ranking.
 
 ## Method
 
@@ -17,9 +17,9 @@ The result applies only to the tested model, prompt, output limit, runtime, and 
 - Concurrency levels: 50 through 400 in increments of 50
 - Metrics: successful requests/second, requests/hour, mean latency, and failures
 
-The historical harness maintained the target number of in-flight requests. The sanitized implementation in [`src/benchmarking/openai_compatible.py`](../src/benchmarking/openai_compatible.py) additionally reports p50, p95, p99, and output-token throughput and contains no private IP addresses.
+The historical notes say that the harness maintained the target number of in-flight requests, but the original request-level output is unavailable for independent recalculation. The sanitized implementation in [`src/benchmarking/openai_compatible.py`](../src/benchmarking/openai_compatible.py) reports p50, p95, p99, failures, and output-token throughput without private endpoint identifiers. It is the implementation to use for the rerun; it does not retroactively validate the historical table.
 
-## Results
+## Historical aggregate table
 
 | Endpoint hardware | Best tested concurrency | Requests/s | Mean latency | Failures |
 |---|---:|---:|---:|---:|
@@ -28,28 +28,30 @@ The historical harness maintained the target number of in-flight requests. The s
 | Radeon AI PRO R9700 endpoint A | 300 | 4.66 | 47.75 s | 0 |
 | Radeon AI PRO R9700 endpoint B | 250 | 4.67 | 40.84 s | 0 |
 
-![Throughput and latency across concurrency levels](../results/throughput-latency.png)
+![Historical throughput and latency summary; rerun required](../results/throughput-latency.png)
+
+The chart is a visualization of the retained aggregate CSV, not raw benchmark evidence.
 
 ## Interpretation
 
-- The RTX PRO 6000 Max-Q saturated near 55 requests/second from concurrency 150 onward. Increasing concurrency beyond that mostly increased latency.
-- The RTX 5090 plateaued near 26 requests/second. Its reported “best” point was only slightly above neighboring measurements and should not be overfit.
-- The two Radeon endpoints plateaued near 4.6 requests/second under the tested ROCm/vLLM stack. This cannot isolate hardware from software maturity, kernel selection, quantization, clocks, or server configuration.
-- Zero HTTP failures does not establish output correctness, server health under multi-hour load, or recovery behavior.
+- The historical table suggests that the RTX PRO 6000 Max-Q saturated near 55 requests/second and that additional concurrency mostly increased latency.
+- It suggests that the RTX 5090 plateaued near 26 requests/second and the two Radeon endpoints near 4.6 requests/second under their then-current stacks.
+- These observations cannot isolate hardware from runtime maturity, kernels, quantization, clocks, power limits, CPU pressure, or configuration.
+- Reported zero HTTP failures does not establish output correctness, multi-hour stability, failover behavior, or recovery.
 
 For an interactive service I would select concurrency from a latency service-level objective, not maximum throughput alone. For offline batch generation, the higher-throughput operating point may be acceptable.
 
 ## Improvements to the next experiment
 
-1. Record exact vLLM, driver, CUDA/ROCm, model revision, dtype, and launch arguments.
-2. Warm each endpoint and repeat every level several times in randomized order.
-3. Capture prompt tokens/second, output tokens/second, time to first token, and inter-token latency.
-4. Measure GPU utilization, VRAM, temperature, clock, power, and CPU saturation.
-5. Use identical model artifacts and decoding settings across endpoints.
-6. Report confidence intervals and retain raw request-level measurements.
-7. Separate interactive latency tests from offline batch-throughput tests.
+1. Create a sanitized system manifest for the current dual-GPU server: GPU model/count, VRAM, driver, CUDA, kernel, CPU, memory, storage, power limits, and thermal configuration.
+2. Record exact vLLM version, container digest, model revision and SHA-256 digest, dtype or quantization, decoding settings, and launch arguments.
+3. Warm each endpoint and repeat every level several times in randomized order.
+4. Capture request-level prompt/output token counts, time to first token, inter-token latency, end-to-end latency, status, and timestamps.
+5. Measure GPU utilization, VRAM, temperature, clock, power, CPU saturation, and host memory pressure.
+6. Define latency and error acceptance thresholds before the run; report confidence intervals and raw-to-summary integrity hashes.
+7. Run steady-state, burst, saturation, soak, restart/recovery, and degraded-capacity tests separately.
+8. Retain the private raw bundle under controlled storage and publish only a reviewed derivative.
 
 ## Portfolio takeaway
 
-The operational lesson is that **concurrency is an empirical control knob**. A larger queue can raise aggregate throughput, but after saturation it mainly transfers delay to users. Good capacity planning preserves both curves and chooses an operating point based on the mission workload.
-
+The operational lesson is that **concurrency is an empirical control knob and evidence needs provenance**. A larger queue can raise aggregate throughput, but after saturation it mainly transfers delay to users. A defensible POC preserves the manifest, workload, raw measurements, hashes, acceptance criteria, and summarized decision together.

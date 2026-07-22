@@ -83,7 +83,10 @@ def plot_inference() -> None:
         axis.grid(alpha=0.25)
     handles, labels = throughput_axis.get_legend_handles_labels()
     figure.legend(handles, labels, loc="lower center", ncol=2, frameon=False)
-    figure.suptitle("vLLM · Qwen2.5-3B-Instruct · 256-token output cap", fontsize=13)
+    figure.suptitle(
+        "Historical vLLM summary · rerun required · Qwen2.5-3B-Instruct",
+        fontsize=13,
+    )
     figure.tight_layout(rect=(0, 0.12, 1, 0.95))
     figure.savefig(RESULTS / "throughput-latency.png", dpi=180)
     plt.close(figure)

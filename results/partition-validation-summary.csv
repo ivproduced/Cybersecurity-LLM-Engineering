@@ -1,0 +1,4 @@
+logical_partition,exposed_memory_gb,evidence_status,limitation
+partition_1,48,partially_verified,Enumeration and memory access only
+partition_2,24,partially_verified,Enumeration and memory access only
+partition_3,24,partially_verified,Enumeration and memory access only
